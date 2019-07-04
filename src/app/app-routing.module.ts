@@ -9,7 +9,8 @@ import { DashboardComponent } from './login/common/dashboard/dashboard.component
 const routes: Routes = [
 {path:'', component:LoginComponent},
 {path: 'register', component:RegisterNowComponent},
-{path: 'common', component:CommonComponent}
+{path: 'common', component:CommonComponent},
+{path: 'common/dashboard', component:DashboardComponent}
 ];
 
 @NgModule({
