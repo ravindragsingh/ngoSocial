@@ -1,0 +1,19 @@
+<div class = "jumbotron">
+  <form>
+    <div class = "form-group">
+
+      <input required ngModel name ="firstName" id ="firstName" type ="text" placeholder="First Name" #userName ="ngModel" class ="form-control" >
+      <input required ngModel name ="lastName" id ="lastName" type ="text" placeholder="Last Name" #userName ="ngModel" class ="form-control" >
+      <input required ngModel name ="dob" id ="dob" type ="date" placeholder="Date of Birth(mm/dd/yyyy)" #userName ="ngModel" class ="form-control" >
+      <input required ngModel name ="email" id ="email" type ="text" placeholder="Email" #userName ="ngModel" class ="form-control" >
+      <input required ngModel name ="phone" id ="phone" type ="text" placeholder="Phone Number" #userName ="ngModel" class ="form-control" >
+    </div>
+    <div>
+      <button class="btn btn-primary form-control btnMargin">Register</button>
+      <br/>
+      <br/>
+      <a routerLink =""><button class="btn btn-success btnMargin">Back</button> </a>
+    </div>
+
+  </form>
+</div>
