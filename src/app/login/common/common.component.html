@@ -1,12 +1,15 @@
-<nav class="navbar navbar-light navbar-toggler" style="background-color: #0c0c0c;">
+<nav class="navbar navbar-light navbar-toggler" style="background-color: #fcfcf9;">
     <form class="form-inline">
 
         <button class="btn btn-link ml-auto" style="position: absolute; right: 0;" type=" button ">Logout</button>
+        <!-- <a routerLink="/common/dashboard"><button class="btn btn-link" type="button">Dashboard</button></a> -->
         <button class="btn btn-link" type="button">Dashboard</button>
 
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="Search Fund Raisers" aria-label="Username" aria-describedby="basic-addon1">
         <button class="btn btn-link" type="button">Search</button>
 
 
     </form>
 </nav>
+<router-outlet></router-outlet>
+<!-- <app-dashboard></app-dashboard> -->

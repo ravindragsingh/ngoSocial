@@ -1,5 +1,6 @@
 .header {
-text-align: center;
-text-shadow: 2px 2px #00FFFF;
-padding-top: 30px;
+    text-align: center;
+    text-shadow: 2px 2px rgba(255, 17, 0, 0.836);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
