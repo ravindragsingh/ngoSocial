@@ -11,10 +11,17 @@ export class DashboardComponent implements OnInit {
   responseProject: any;
   donorProfile: any;
   responseDonor: any;
+  userId : string;
+  private sub: any; 
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.userId= params['userId']; 
+      
+      console.log(this.userId + " from Dashboard Component");
+            });
     let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project001');
     
     responseProject.subscribe(
@@ -24,7 +31,7 @@ export class DashboardComponent implements OnInit {
       }
      );
 
-     let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId=surendra&userType=donor');
+     let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId='+ this.userId +'&userType=donor');
     
      donorProfile.subscribe(
        (donorProf) => {
@@ -32,7 +39,7 @@ export class DashboardComponent implements OnInit {
          console.log(donorProf)
        }
       );
-      let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=surendra');
+      let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
@@ -56,7 +63,7 @@ export class DashboardComponent implements OnInit {
 
   }
   financeDet() {
-    let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId=surendra&userType=donor');
+    let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId='+ this.userId + '&userType=donor');
     
      donorProfile.subscribe(
        (donorProf) => {
@@ -67,7 +74,7 @@ export class DashboardComponent implements OnInit {
 
   }
   moneDonated() {
-    let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=surendra');
+    let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
