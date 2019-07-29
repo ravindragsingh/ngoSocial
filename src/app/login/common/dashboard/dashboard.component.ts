@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
       
       console.log(this.userId + " from Dashboard Component");
             });
-    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project001');
+    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project004');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
      donorProfile.subscribe(
        (donorProf) => {
          this.donorProfile = donorProf;
-         console.log(donorProf)
+        // console.log(donorProf)
        }
       );
       let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
      donorProfile.subscribe(
        (donorProf) => {
          this.donorProfile = donorProf;
-         console.log(donorProf)
+         //console.log(donorProf)
        }
       );
 

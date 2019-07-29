@@ -1,6 +1,10 @@
+<p class="card-text col-sm-6 text-white bg-secondary ">
+    Your Account Balance : ${{donorProfile.data.msg.AccountBalance}}</p>
 <div class="row ">
+
     <div class="col-sm-6 text-white bg-secondary ">
         <div class="card">
+
             <div class="card-body bg-info">
                 <button (click)="projDet()" class="btn btn-warning form-control btnMargin">Fun Raiser Details </button>
                 <div *ngIf="responseProject">
@@ -17,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6  text-white bg-secondary ">
+    <!-- <div class="col-sm-6  text-white bg-secondary ">
         <div class="card">
             <div class="card-body bg-secondary">
                 <button (click)="financeDet()" class="btn btn-warning form-control btnMargin">Wallet</button>
@@ -29,21 +33,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
-<!-- <div class="card w-100 text-white bg-success">
-    <div class="card-body ">
-        <button (click)="moneDonated()" class="btn btn-danger form-control btnMargin">Fun Raiser Details </button>
-        <div *ngIf="responseDonor">
-            <p class="card-text">Fund Raiser Id : {{responseProject.data.msg.ProjectID}}</p>
-            <p class="card-text">Fund Raiser Name : {{responseProject.data.msg.ProjectName}}</p>
-            <p class="card-text">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</p>
-            <p class="card-text">Fund Raiser Expected Money : {{responseProject.data.msg.ExpectedMoney}}</p>
-            <p class="card-text">Fund Raiser Collected Money : {{responseProject.data.msg.CollectedMoney}}</p>
-            <p class="card-text">Fund Raiser Spent Money : {{responseProject.data.msg.SpentMoney}}</p>
-            <p class="card-text">Fund Raiser Left Over Money : {{responseProject.data.msg.UnSpentMoney}}</p>
-            <p class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</p>
-
-        </div>
-    </div>
-</div> -->
