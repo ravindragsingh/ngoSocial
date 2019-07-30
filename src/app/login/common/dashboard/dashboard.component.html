@@ -15,17 +15,21 @@
             <div *ngIf="responseProject">
                 <p class="card-text">Fund Raiser Id : {{responseProject.data.msg.ProjectID}}</p>
                 <p class="card-text">Fund Raiser Name : {{responseProject.data.msg.ProjectName}}</p>
-                <p class="card-text">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</p>
+                <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</p>
                 <p class="card-text">Fund Raiser Expected Money : {{responseProject.data.msg.ExpectedMoney}}</p>
                 <p class="card-text">Fund Raiser Collected Money : {{responseProject.data.msg.CollectedMoney}}</p>
                 <p class="card-text">Fund Raiser Spent Money : {{responseProject.data.msg.SpentMoney}}</p>
                 <p class="card-text">Fund Raiser Left Over Money : {{responseProject.data.msg.UnSpentMoney}}</p>
                 <p class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</p>
-                <div *ngIf="projectStatus == 'complete' ; else donateButton ">
-                    This project has received all required money, you cannot donate more.
+                <div *ngIf="responseProject.data.msg.ProjectStatus === 'in progress' ; else donateButton ">
 
+                    <div class="badge badge-danger">
+                        This project has received all required money, you cannot donate more.
+                    </div>
+                    <!-- <button>Donate Money</button> -->
                 </div>
                 <ng-template #donateButton>
+                    <!-- This project has received all required money, you cannot donate more. -->
                     <button>Donate Money</button>
                 </ng-template>
 
@@ -36,22 +40,22 @@
         <div class="col-sm bg-primary text-white">
             <button class="btn btn-warning form-control btnMargin">Fund Raiser 2</button>
             <div *ngIf="responseProject">
-                <p class="card-text">Fund Raiser Id : {{responseProject.data.msg.ProjectID}}</p>
-                <p class="card-text">Fund Raiser Name : {{responseProject.data.msg.ProjectName}}</p>
-                <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</p>
-                <p class="card-text">Fund Raiser Expected Money : {{responseProject.data.msg.ExpectedMoney}}</p>
-                <p class="card-text">Fund Raiser Collected Money : {{responseProject.data.msg.CollectedMoney}}</p>
-                <p class="card-text">Fund Raiser Spent Money : {{responseProject.data.msg.SpentMoney}}</p>
-                <p class="card-text">Fund Raiser Left Over Money : {{responseProject.data.msg.UnSpentMoney}}</p>
-                <p class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</p>
-                <div *ngIf="projectStatus == 'complete' ; else donateButton ">
+                <p class="card-text">Fund Raiser Id : {{responseProject2.data.msg.ProjectID}}</p>
+                <p class="card-text">Fund Raiser Name : {{responseProject2.data.msg.ProjectName}}</p>
+                <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject2.data.msg.ProjectStatus}}</p>
+                <p class="card-text">Fund Raiser Expected Money : {{responseProject2.data.msg.ExpectedMoney}}</p>
+                <p class="card-text">Fund Raiser Collected Money : {{responseProject2.data.msg.CollectedMoney}}</p>
+                <p class="card-text">Fund Raiser Spent Money : {{responseProject2.data.msg.SpentMoney}}</p>
+                <p class="card-text">Fund Raiser Left Over Money : {{responseProject2.data.msg.UnSpentMoney}}</p>
+                <p class="card-text">Expected Completion Date : {{responseProject2.data.msg.ExpectedCompletionDate}}</p>
+                <div *ngIf="responseProject2.data.msg.ProjectStatus === 'in progress' ; else donateButton1 ">
                     This project has received all required money, you cannot donate more.
-
+                    <!-- <button>Donate Money</button> -->
                 </div>
-                <ng-template #donateButton>
+                <ng-template #donateButton1>
+                    <!-- This project has received all required money, you cannot donate more. -->
                     <button>Donate Money</button>
                 </ng-template>
-
             </div>
 
         </div>
