@@ -1,12 +1,8 @@
 <div class="badge badge-warning">
     Your Account Balance : ${{donorProfile.data.msg.AccountBalance}}
-
 </div>
-
 <div class="form-control text-center text-uppercase bckgroundColor text-white">
-
     <h5>Fund Raisers</h5>
-
 </div>
 <div class="container">
     <div class="row">
@@ -21,28 +17,29 @@
                 <p class="card-text">Fund Raiser Spent Money : {{responseProject.data.msg.SpentMoney}}</p>
                 <p class="card-text">Fund Raiser Left Over Money : {{responseProject.data.msg.UnSpentMoney}}</p>
                 <p class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</p>
-                <!-- <div *ngIf="responseProject.data.msg.ProjectStatus == 'closed' ; else donateButton "> -->
-                <div *ngIf="responseProject.data.msg.ExpectedMoney == responseProject.data.msg.CollectedMoney ; else donateButton ">
+                <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney || responseProject.data.msg.CollectedMoney == responseProject.data.msg.ExpectedMoney ; else donateButton ">
+
+                    <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney">
+                        <button> Money availble to withdraw</button>
+                    </div>
+
 
                     <div class="badge badge-danger">
                         This project has received all required money, no more donation.
                         <br>
                         <button>Expenditure Details</button>
                     </div>
-                    <!-- <button>Donate Money</button> -->
+
                 </div>
                 <ng-template #donateButton>
-                    <!-- This project has received all required money, you cannot donate more. -->
                     <button>Donate Money</button>
                 </ng-template>
-
-
             </div>
-
         </div>
-        <div class="col-sm bg-primary text-white">
+
+        <div class="col-sm-6 bg-primary text-white">
             <button class="btn btn-warning form-control btnMargin">Fund Raiser 2</button>
-            <div *ngIf="responseProject">
+            <div *ngIf="responseProject2">
                 <p class="card-text">Fund Raiser Id : {{responseProject2.data.msg.ProjectID}}</p>
                 <p class="card-text">Fund Raiser Name : {{responseProject2.data.msg.ProjectName}}</p>
                 <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject2.data.msg.ProjectStatus}}</p>
@@ -51,38 +48,35 @@
                 <p class="card-text">Fund Raiser Spent Money : {{responseProject2.data.msg.SpentMoney}}</p>
                 <p class="card-text">Fund Raiser Left Over Money : {{responseProject2.data.msg.UnSpentMoney}}</p>
                 <p class="card-text">Expected Completion Date : {{responseProject2.data.msg.ExpectedCompletionDate}}</p>
-                <div *ngIf="responseProject2.data.msg.ExpectedMoney == responseProject2.data.msg.CollectedMoney ; else donateButton ">
+
+                <!-- Condition to check the completion of the project -->
+                <div *ngIf="responseProject2.data.msg.CollectedMoney > responseProject2.data.msg.ExpectedMoney || responseProject2.data.msg.CollectedMoney == responseProject2.data.msg.ExpectedMoney ; else donateButton1 ">
+
+                    <!-- Condition to check the extra money available to withdraw -->
+                    <div *ngIf="responseProject2.data.msg.CollectedMoney > responseProject2.data.msg.ExpectedMoney">
+                        <div class="badge badge-warning">
+                            This project has received more money than needed
+                            <br>
+
+                            <button>Withdraw Money</button>
+                        </div>
+                    </div>
+                    <!-- End of condition to check extra money -->
                     <div class="badge badge-danger">
                         This project has received all required money, no more donation.
                         <br>
+
                         <button>Expenditure Details</button>
                     </div>
-                    <!-- <button>Donate Money</button> -->
+
                 </div>
+                <!-- End of Condition to check the completion of the project -->
+                <!-- Else condition of completion of project -->
                 <ng-template #donateButton1>
-                    <!-- This project has received all required money, you cannot donate more. -->
                     <button>Donate Money</button>
                 </ng-template>
             </div>
 
         </div>
     </div>
-
-
-    <!-- <button (click)=" projDet() " class="btn btn-warning form-control btnMargin ">Fun Raiser Details </button> -->
-
-
-    <!-- <div class="col-sm-6 text-white bg-secondary ">
-        <div class="card ">
-            <div class="card-body bg-secondary ">
-                <button (click)="financeDet() " class="btn btn-warning form-control btnMargin ">Wallet</button>
-                <div *ngIf="donorProfile ">
-                    <p class="card-text ">Email : {{donorProfile.data.msg.Email}}</p>
-                    <p class="card-text ">ProjectId : {{responseDonor.data.msg.ProjectID}}</p>
-                    <p class="card-text ">Account Balance : ${{donorProfile.data.msg.AccountBalance}}</p>
-                    <p class="card-text ">Total Money Donated : {{responseDonor.data.msg.TotalMoneyDonated}}</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>

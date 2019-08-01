@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
         console.log(retValProj)
       }
      );
-     let responseProject2 = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project005');
+     let responseProject2 = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project007');
     
     responseProject2.subscribe(
       (retValProj2) => {
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
        }
       );
 
-      let responseDonor2 = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project005&donorId=' + this.userId);
+      let responseDonor2 = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project007&donorId=' + this.userId);
     
      responseDonor2.subscribe(
        (retValDonor2) => {
