@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
       
       console.log(this.userId + " from Dashboard Component");
             });
-    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project004');
+    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project006');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
         // console.log(donorProf)
        }
       );
-      let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project004&donorId=' + this.userId);
+      let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project006&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
