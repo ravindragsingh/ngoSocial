@@ -20,14 +20,20 @@
                 <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney || responseProject.data.msg.CollectedMoney == responseProject.data.msg.ExpectedMoney ; else donateButton ">
 
                     <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney">
-                        <button> Money availble to withdraw</button>
+                        <!-- <button> Money availble to withdraw</button> -->
+                        <div class="badge badge-light">This project has received more money than needed, Money available to withdraw
+                            <br>
+                            <a routerLink="withdrawMoney"><button class = "btn btn-primary"type="button">Money availble to withdraw</button></a>
+                        </div>
+
                     </div>
+                    <br>
 
 
-                    <div class="badge badge-danger">
+                    <div class="badge badge-light">
                         This project has received all required money, no more donation.
                         <br>
-                        <button>Expenditure Details</button>
+                        <a routerLink="expenditure"><button class = "btn btn-primary"type="button">Expenditure Details</button></a>
                     </div>
 
                 </div>
@@ -54,19 +60,20 @@
 
                     <!-- Condition to check the extra money available to withdraw -->
                     <div *ngIf="responseProject2.data.msg.CollectedMoney > responseProject2.data.msg.ExpectedMoney">
-                        <div class="badge badge-warning">
-                            This project has received more money than needed
+                        <div class="badge badge-light">This project has received more money than needed, Money available to withdraw
                             <br>
-
-                            <button>Withdraw Money</button>
+                            <a routerLink="withdrawMoney"><button class = "btn btn-primary"  type="button">Money availble to withdraw</button></a>
                         </div>
+
+
                     </div>
+                    <br>
                     <!-- End of condition to check extra money -->
-                    <div class="badge badge-danger">
+                    <div class="badge badge-light">
                         This project has received all required money, no more donation.
                         <br>
 
-                        <button>Expenditure Details</button>
+                        <a routerLink="expenditure"><button class = "btn btn-primary"type="button">Expenditure Details</button></a>
                     </div>
 
                 </div>

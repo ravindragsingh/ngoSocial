@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterNowComponent } from './register-now/register-now.component';
 import { CommonComponent } from './login/common/common.component';
 import { DashboardComponent } from './login/common/dashboard/dashboard.component';
+import { ExpenditureDetailsComponent } from './login/common/dashboard/expenditure-details/expenditure-details.component';
+import { AvailableWithdrawComponent } from './login/common/dashboard/available-withdraw/available-withdraw.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DashboardComponent } from './login/common/dashboard/dashboard.component
     LoginComponent,
     RegisterNowComponent,
     CommonComponent,
-    DashboardComponent
+    DashboardComponent,
+    ExpenditureDetailsComponent,
+    AvailableWithdrawComponent
      ],
   imports: [
     BrowserModule,
