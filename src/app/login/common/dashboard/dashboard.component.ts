@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   responseDonor2 : any;
   userId : string;
   private sub: any; 
+  donMon : any;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -104,6 +105,22 @@ export class DashboardComponent implements OnInit {
        (retValDonor) => {
          this.responseDonor = retValDonor;
          console.log(retValDonor)
+       }
+      );
+  }
+
+  donateMoney() {
+    let donMon = this.http.post(`http://smtb.mybluemix.net/donate-money`,
+    {
+      projectId:'project006',
+      donorId:'surendra',
+      moneyToDonate: 20
+    } );
+    
+     donMon.subscribe(
+       (retValDonote) => {
+         this.donMon = retValDonote;
+         console.log(retValDonote)
        }
       );
   }

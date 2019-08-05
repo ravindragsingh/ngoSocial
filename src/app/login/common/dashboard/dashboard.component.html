@@ -1,5 +1,5 @@
 <div class="badge badge-warning">
-    Your Account Balance : ${{donorProfile.data.msg.AccountBalance}}
+    Your Account Balance : ${{donorProfile.data.msg.AccountBalance}} <button>Check Wallet</button>
 </div>
 <div class="form-control text-center text-uppercase bckgroundColor text-white">
     <h5>Fund Raisers</h5>
@@ -9,19 +9,21 @@
         <div class="col-sm bg-success text-white">
             <button class="btn btn-warning form-control btnMargin">Fund Raiser 1</button>
             <div *ngIf="responseProject">
-                <p class="card-text">Fund Raiser Id : {{responseProject.data.msg.ProjectID}}</p>
-                <p class="card-text">Fund Raiser Name : {{responseProject.data.msg.ProjectName}}</p>
-                <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</p>
-                <p class="card-text">Fund Raiser Expected Money : {{responseProject.data.msg.ExpectedMoney}}</p>
-                <p class="card-text">Fund Raiser Collected Money : {{responseProject.data.msg.CollectedMoney}}</p>
-                <p class="card-text">Fund Raiser Spent Money : {{responseProject.data.msg.SpentMoney}}</p>
-                <p class="card-text">Fund Raiser Left Over Money : {{responseProject.data.msg.UnSpentMoney}}</p>
-                <p class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</p>
-                <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney || responseProject.data.msg.CollectedMoney == responseProject.data.msg.ExpectedMoney ; else donateButton ">
+                <li class="card-text">Fund Raiser Id : {{responseProject.data.msg.ProjectID}}</li>
+                <li class="card-text">Fund Raiser Name : {{responseProject.data.msg.ProjectName}}</li>
+                <li class="card-text badge badge-danger" value="projectStatus">Fund Raiser Status : {{responseProject.data.msg.ProjectStatus}}</li>
+                <li class="card-text">Fund Raiser Expected Money : ${{responseProject.data.msg.ExpectedMoney}}</li>
+                <li class="card-text">Fund Raiser Collected Money : ${{responseProject.data.msg.CollectedMoney}}</li>
+                <li class="card-text">Fund Raiser Spent Money : ${{responseProject.data.msg.SpentMoney}}</li>
+                <li class="card-text">Fund Raiser Left Over Money : ${{responseProject.data.msg.UnSpentMoney}}</li>
+                <li class="card-text">Expected Completion Date : {{responseProject.data.msg.ExpectedCompletionDate}}</li>
+                <div *ngIf="responseProject.data.msg.CollectedMoney < responseProject.data.msg.ExpectedMoney || responseProject.data.msg.CollectedMoney == responseProject.data.msg.ExpectedMoney ; else donateButton ">
 
                     <div *ngIf="responseProject.data.msg.CollectedMoney > responseProject.data.msg.ExpectedMoney">
                         <!-- <button> Money availble to withdraw</button> -->
-                        <div class="badge badge-light">This project has received more money than needed, Money available to withdraw
+                        <!-- <div class="badge badge-light">This project has received more money than needed, Money available to withdraw -->
+                        <div>
+                            <h6 class="badge badge-light">Project completed - You cannot donate</h6>
                             <br>
                             <a routerLink="withdrawMoney"><button class = "btn btn-primary"type="button">Money availble to withdraw</button></a>
                         </div>
@@ -29,16 +31,21 @@
                     </div>
                     <br>
 
-
-                    <div class="badge badge-light">
-                        This project has received all required money, no more donation.
+                    <div>
+                        <!-- <div class="badge badge-light">
+                        This project has received all required money, no more donation. -->
+                        <h6 class="badge badge-light">Project completed - Check Expenditure</h6>
                         <br>
                         <a routerLink="expenditure"><button class = "btn btn-primary"type="button">Expenditure Details</button></a>
                     </div>
 
                 </div>
                 <ng-template #donateButton>
-                    <button>Donate Money</button>
+                    <h6 class="badge badge-light">You can donate</h6>
+                    <input required ngModel name="amount" id="amount" type="text" placeholder="Amount to Donate" #amount="ngModel" class="form-control">
+                    <input required ngModel name="projectId" id="projectId" type="text" placeholder="Project ID" #projectId="ngModel" class="form-control">
+                    <br>
+                    <button (click)="donateMoney()">Donate Money</button>
                 </ng-template>
             </div>
         </div>
@@ -46,41 +53,49 @@
         <div class="col-sm-6 bg-primary text-white">
             <button class="btn btn-warning form-control btnMargin">Fund Raiser 2</button>
             <div *ngIf="responseProject2">
-                <p class="card-text">Fund Raiser Id : {{responseProject2.data.msg.ProjectID}}</p>
-                <p class="card-text">Fund Raiser Name : {{responseProject2.data.msg.ProjectName}}</p>
-                <p class="card-text" value="projectStatus">Fund Raiser Status : {{responseProject2.data.msg.ProjectStatus}}</p>
-                <p class="card-text">Fund Raiser Expected Money : {{responseProject2.data.msg.ExpectedMoney}}</p>
-                <p class="card-text">Fund Raiser Collected Money : {{responseProject2.data.msg.CollectedMoney}}</p>
-                <p class="card-text">Fund Raiser Spent Money : {{responseProject2.data.msg.SpentMoney}}</p>
-                <p class="card-text">Fund Raiser Left Over Money : {{responseProject2.data.msg.UnSpentMoney}}</p>
-                <p class="card-text">Expected Completion Date : {{responseProject2.data.msg.ExpectedCompletionDate}}</p>
+                <li class="card-text">Fund Raiser Id : {{responseProject2.data.msg.ProjectID}}</li>
+                <li class="card-text">Fund Raiser Name : {{responseProject2.data.msg.ProjectName}}</li>
+                <li class="card-text badge badge-danger" value="projectStatus">Fund Raiser Status : {{responseProject2.data.msg.ProjectStatus}}</li>
+                <li class="card-text">Fund Raiser Expected Money : ${{responseProject2.data.msg.ExpectedMoney}}</li>
+                <li class="card-text">Fund Raiser Collected Money : ${{responseProject2.data.msg.CollectedMoney}}</li>
+                <li class="card-text">Fund Raiser Spent Money : ${{responseProject2.data.msg.SpentMoney}}</li>
+                <li class="card-text">Fund Raiser Left Over Money : ${{responseProject2.data.msg.UnSpentMoney}}</li>
+                <li class="card-text">Expected Completion Date : {{responseProject2.data.msg.ExpectedCompletionDate}}</li>
 
                 <!-- Condition to check the completion of the project -->
                 <div *ngIf="responseProject2.data.msg.CollectedMoney > responseProject2.data.msg.ExpectedMoney || responseProject2.data.msg.CollectedMoney == responseProject2.data.msg.ExpectedMoney ; else donateButton1 ">
 
                     <!-- Condition to check the extra money available to withdraw -->
                     <div *ngIf="responseProject2.data.msg.CollectedMoney > responseProject2.data.msg.ExpectedMoney">
-                        <div class="badge badge-light">This project has received more money than needed, Money available to withdraw
+                        <!-- <div class="badge badge-light">This project has received more money than needed, Money available to withdraw -->
+                        <div>
+                            <h6 class="badge badge-light">Project completed - You cannot donate</h6>
                             <br>
-                            <a routerLink="withdrawMoney"><button class = "btn btn-primary"  type="button">Money availble to withdraw</button></a>
+                            <a routerLink="withdrawMoney"><button   type="button">Money availble to withdraw</button></a>
                         </div>
 
 
                     </div>
                     <br>
                     <!-- End of condition to check extra money -->
-                    <div class="badge badge-light">
-                        This project has received all required money, no more donation.
+                    <!-- <div class="badge badge-light">
+                        This project has received all required money, no more donation. -->
+                    <div>
+                        <h6 class="badge badge-light">Project completed - Check Expenditure</h6>
                         <br>
 
-                        <a routerLink="expenditure"><button class = "btn btn-primary"type="button">Expenditure Details</button></a>
+                        <a routerLink="expenditure"><button type="button">Expenditure Details</button></a>
                     </div>
 
                 </div>
                 <!-- End of Condition to check the completion of the project -->
                 <!-- Else condition of completion of project -->
-                <ng-template #donateButton1>
-                    <button>Donate Money</button>
+                <ng-template #donateButton>
+                    <h6 class="badge badge-light">You can donate</h6>
+                    <input required ngModel name="amount" id="amount" type="text" placeholder="Amount to Donate" #amount="ngModel" class="form-control">
+                    <input required ngModel name="projectId" id="projectId" type="text" placeholder="Project ID" #projectId="ngModel" class="form-control">
+                    <br>
+                    <button (click)="donateMoney()">Donate Money</button>
                 </ng-template>
             </div>
 
