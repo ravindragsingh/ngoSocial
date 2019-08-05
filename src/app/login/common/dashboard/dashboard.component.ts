@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
       
       console.log(this.userId + " from Dashboard Component");
             });
-    let responseProject = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project006');
+    let responseProject = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project008');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
         // console.log(donorProf)
        }
       );
-      let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project006&donorId=' + this.userId);
+      let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project008&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
     // };
     
     const body = new HttpParams()
-    .set('projectId', "project006")
+    .set('projectId', "project008")
     .set('donorId', "surendra")
     .set('moneyToDonate', "20");
 
