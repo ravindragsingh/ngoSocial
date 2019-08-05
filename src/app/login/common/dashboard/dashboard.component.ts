@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ExpenditureDetailsComponent } from './expenditure-details/expenditure-details.component';
 import { AvailableWithdrawComponent } from './available-withdraw/available-withdraw.component';
 import { Router,ActivatedRoute  } from '@angular/router';
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
       
       console.log(this.userId + " from Dashboard Component");
             });
-    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project006');
+    let responseProject = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project006');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
         console.log(retValProj)
       }
      );
-     let responseProject2 = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project007');
+     let responseProject2 = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project007');
     
     responseProject2.subscribe(
       (retValProj2) => {
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
       }
      );
 
-     let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId='+ this.userId +'&userType=donor');
+     let donorProfile = this.http.get('https://smtb.mybluemix.net/get-user?userId='+ this.userId +'&userType=donor');
     
      donorProfile.subscribe(
        (donorProf) => {
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
         // console.log(donorProf)
        }
       );
-      let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project006&donorId=' + this.userId);
+      let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project006&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
        }
       );
 
-      let responseDonor2 = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project007&donorId=' + this.userId);
+      let responseDonor2 = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project007&donorId=' + this.userId);
     
      responseDonor2.subscribe(
        (retValDonor2) => {
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
   //ngonInit End 
 
   projDet() {
-    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project001');
+    let responseProject = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project001');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
 
 
   financeDet() {
-    let donorProfile = this.http.get('http://smtb.mybluemix.net/get-user?userId='+ this.userId + '&userType=donor');
+    let donorProfile = this.http.get('https://smtb.mybluemix.net/get-user?userId='+ this.userId + '&userType=donor');
     
      donorProfile.subscribe(
        (donorProf) => {
@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
 
   }
   moneDonated() {
-    let responseDonor = this.http.get('http://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
+    let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
@@ -110,17 +110,31 @@ export class DashboardComponent implements OnInit {
   }
 
   donateMoney() {
-    let donMon = this.http.post(`http://smtb.mybluemix.net/donate-money`,
-    {
-      projectId:'project006',
-      donorId:'surendra',
-      moneyToDonate: 20
-    } );
+    // const bodyData = {
+    //   "projectId":"project006",
+    //   "donorId":"surendra",
+    //   "moneyToDonate": "20"
+    // };
+
+    // const httpOptions = {
+    //   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+    // };
     
-     donMon.subscribe(
+    const body = new HttpParams()
+    .set('projectId', "project006")
+    .set('donorId', "surendra")
+    .set('moneyToDonate', "20");
+
+
+    this.http.post('https://smtb.mybluemix.net/donate-money',body.toString(),
+    {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+    })    
+     .subscribe(
        (retValDonote) => {
          this.donMon = retValDonote;
-         console.log(retValDonote)
+         console.log('POST DATA=' +retValDonote)
        }
       );
   }
