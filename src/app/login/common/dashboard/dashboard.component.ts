@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
 
   }
   moneDonated() {
-    let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
+    let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project008&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {
