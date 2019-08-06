@@ -27,7 +27,9 @@ export class DashboardComponent implements OnInit {
       
       console.log(this.userId + " from Dashboard Component");
             });
-    let responseProject = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project008');
+           
+            //fund raiser 1 details
+    let responseProject = this.http.get('http://smtb.mybluemix.net/get-project-info?projectId=project008');
     
     responseProject.subscribe(
       (retValProj) => {
@@ -35,6 +37,7 @@ export class DashboardComponent implements OnInit {
         console.log(retValProj)
       }
      );
+     // fund raiser 2 details
      let responseProject2 = this.http.get('https://smtb.mybluemix.net/get-project-info?projectId=project007');
     
     responseProject2.subscribe(
@@ -43,7 +46,8 @@ export class DashboardComponent implements OnInit {
         console.log(retValProj2)
       }
      );
-
+      
+     //donor profile
      let donorProfile = this.http.get('https://smtb.mybluemix.net/get-user?userId='+ this.userId +'&userType=donor');
     
      donorProfile.subscribe(
@@ -99,7 +103,7 @@ export class DashboardComponent implements OnInit {
 
   }
   moneDonated() {
-    let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project008&donorId=' + this.userId);
+    let responseDonor = this.http.get('https://smtb.mybluemix.net/get-project-donor?projectId=project001&donorId=' + this.userId);
     
      responseDonor.subscribe(
        (retValDonor) => {

@@ -11,6 +11,8 @@ import { CommonComponent } from './login/common/common.component';
 import { DashboardComponent } from './login/common/dashboard/dashboard.component';
 import { ExpenditureDetailsComponent } from './login/common/dashboard/expenditure-details/expenditure-details.component';
 import { AvailableWithdrawComponent } from './login/common/dashboard/available-withdraw/available-withdraw.component';
+import { MoneyToWithdrawComponent } from './money-to-withdraw/money-to-withdraw.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AvailableWithdrawComponent } from './login/common/dashboard/available-w
     CommonComponent,
     DashboardComponent,
     ExpenditureDetailsComponent,
-    AvailableWithdrawComponent
+    AvailableWithdrawComponent,
+    MoneyToWithdrawComponent
      ],
   imports: [
     BrowserModule,

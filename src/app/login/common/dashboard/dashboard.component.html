@@ -47,8 +47,10 @@
                     <input required ngModel name="projectId" id="projectId" type="text" placeholder="Project ID" #projectId="ngModel" class="form-control">
                     <br>
                     <button (click)="donateMoney()">Donate Money</button>
-
-                    <button class="btn btn-outline-dark header">Approval Status : {{donMon.status}}</button>
+                    <div *ngIf="donMon">
+                        <button class="btn btn-outline-dark header">Approval Status : {{donMon.status}}</button>
+                    </div>
+                    <!-- <button class="btn btn-outline-dark header">Approval Status : {{donMon.status}}</button> -->
                 </ng-template>
             </div>
         </div>
@@ -100,7 +102,9 @@
                     <br>
                     <button (click)="donateMoney()">Donate Money</button>
                     <br>
-                    <button class="btn btn-outline-dark header">Approval Status : {{donMon.status}}</button>
+                    <div *ngIf="donMon">
+                        <button class="btn btn-outline-dark header">Approval Status : {{donMon.status}}</button>
+                    </div>
                 </ng-template>
             </div>
 
